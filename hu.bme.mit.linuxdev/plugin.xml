@@ -5,12 +5,20 @@
          point="org.eclipse.cdt.core.templates">
       <template
             filterPattern=".*gcc"
-            id="hu.bme.mit.KernelModule"
+            id="hu.bme.mit.linuxdev.KernelModule"
             isCategory="false"
-            location="templates/template.xml"
+            location="templates/module.xml"
             pagesAfterTemplateSelectionProvider="hu.bme.mit.linuxdev.KernelSettingsPageProvider"
             projectType="org.eclipse.cdt.build.makefile.projectType">
 
+      </template>
+      <template
+            filterPattern=".*gcc"
+            id="hu.bme.mit.linuxdev.PlatformDriver"
+            isCategory="false"
+            location="templates/platform.xml"
+            pagesAfterTemplateSelectionProvider="hu.bme.mit.linuxdev.PlatformDriverSettingsPageProvider"
+            projectType="org.eclipse.cdt.build.makefile.projectType">
       </template>
    </extension>
    <extension

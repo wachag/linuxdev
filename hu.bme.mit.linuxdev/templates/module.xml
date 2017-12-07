@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<template type="ProjTempl" version="1.0" supplier="mit.bme.hu"
+	revision="1.0" copyright="Copyright (c) 2017 Wacha Gabor All rights reserved"
+	id="hu.bme.mit.linuxdev.KernelModule" label="Linux kernel module" description="A skeleton kernel module">
+	<!-- <property-group id="basics" label="Module settings" description="Basic 
+		kernel module settings" type="PAGES-ONLY"> <property id="module.author" label="Module 
+		author" description="Author of the module" type="input" persist="true" hidden="false" 
+		/> <property id="module.description" label="Module description" description="Description 
+		of the module" type="input" persist="true" hidden="false" /> <property id="module.license" 
+		label="Module license" description="License of the module" type="input" default="GPL" 
+		persist="true" hidden="false" /> <property id="module.arch" label="CPU architecture" 
+		description="CPU architecture" type="input" default="" persist="true" hidden="false" 
+		/> <property id="module.ccprefix" label="Cross compiler prefix" description="Cross 
+		compiler prefix" type="input" default="" persist="true" hidden="false" /> 
+		<property id="module.kerneldir" label="Kernel build directory" description="Directory 
+		of the configured kernel" type="browsedir" default="" persist="true" hidden="false" 
+		/> </property-group> -->
+	<process
+		type="org.eclipse.cdt.managedbuilder.core.AddLanguageSettingsProvider">
+		<simple name="projectName" value="$(projectName)" />
+		<simple-array name="languageSettingsProviderIds">
+			<element value="hu.bme.mit.linuxdev.KernelLanguageSettingsProvider" />
+		</simple-array>
+	</process>
+	<process type="org.eclipse.cdt.core.SetEnvironmentVariable">
+		<simple name="projectName" value="$(projectName)" />
+		<complex-array name="variables">
+			<element>
+				<simple name="name" value="ARCH" />
+				<simple name="value" value="$(module.arch)" />
+			</element>
+			<element>
+				<simple name="name" value="KDIR" />
+				<simple name="value" value="$(module.kerneldir)" />
+			</element>
+			<element>
+				<simple name="name" value="CROSS_COMPILE" />
+				<simple name="value" value="$(module.ccprefix)" />
+			</element>
+		</complex-array>
+	</process>
+	<process type="org.eclipse.cdt.core.AddFiles">
+		<simple name="projectName" value="$(projectName)" />
+		<complex-array name="files">
+			<element>
+				<simple name="source" value="module/module.c" />
+				<simple name="target" value="$(projectName).c" />
+				<simple name="replaceable" value="true" />
+			</element>
+			<element>
+				<simple name="source" value="common/Makefile" />
+				<simple name="target" value="Makefile" />
+				<simple name="replaceable" value="true" />
+			</element>
+		</complex-array>
+	</process>
+	<process type="org.eclipse.cdt.ui.OpenFiles">
+		<simple name="projectName" value="$(projectName)" />
+		<complex-array name="files">
+			<element>
+				<simple name="target" value="$(projectName).c" />
+			</element>
+		</complex-array>
+	</process>
+	<process type="org.eclipse.cdt.make.core.AddMakeTarget">
+		<simple name="projectName" value="$(projectName)" />
+		<simple name="targetName" value="all" />
+	</process>
+	<process type="org.eclipse.cdt.make.core.AddMakeTarget">
+		<simple name="projectName" value="$(projectName)" />
+		<simple name="targetName" value="clean" />
+	</process>
+
+</template>

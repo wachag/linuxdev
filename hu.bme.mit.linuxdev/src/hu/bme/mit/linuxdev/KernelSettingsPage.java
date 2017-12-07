@@ -151,7 +151,6 @@ public class KernelSettingsPage extends AbstractWizardDataPage implements IWizar
 		
 		KernelFinder kfinder = new KernelFinder();
 		for (Entry<String, String> entry : kfinder.getKernels()) {
-			System.out.println(entry.getValue());
 			kernelCombo.add(entry.getValue());
 		}
 	}
