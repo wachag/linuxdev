@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/hu.bme.mit.linuxdev.feature_1.0.0.qualifier.jar" id="hu.bme.mit.linuxdev.feature" version="1.0.0.qualifier" os="linux" arch="x86,x86_64">
+      <category name="hu.bme.mit.linuxdev.category"/>
+   </feature>
+   <category-def name="hu.bme.mit.linuxdev.category" label="Linux kernel module development">
+      <description>
+         CDT plugin for Linux kernel module development
+      </description>
+   </category-def>
+</site>
